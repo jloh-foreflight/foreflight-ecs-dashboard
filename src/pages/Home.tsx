@@ -13,13 +13,12 @@ export function Home() {
     // Till the data is fetch using API
     // the Loading page will show.
     setLoading(true);
-
+    const key: any = import.meta.env.VITE_API_ACCESS_KEY
     const myHeaders: Headers = new Headers();
     // add content type header and API key to object
     //myHeaders.append('X-Api-Key', process.env.VITE_API_ACCESS_KEY);
-    myHeaders.append('X-Api-Key', import.meta.env.VITE_API_ACCESS_KEY);
+    myHeaders.append('X-Api-Key', key);
     myHeaders.append('Content-Type', 'application/json');
-    console.log(myHeaders)
 
     const requestOptions: object = {
       method: 'POST',
@@ -29,7 +28,6 @@ export function Home() {
     };
     //const api_invocation_link: string = process.env.VITE_API_INVOKE_URL;
     const api_invocation_link: any = import.meta.env.VITE_API_INVOKE_URL;
-    console.log(api_invocation_link)
     const response: any = await fetch(api_invocation_link, requestOptions);
     const res_json: any = await response.json();
     const res_body: string = res_json.body
