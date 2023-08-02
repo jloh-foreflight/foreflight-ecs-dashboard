@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { useOktaAuth } from '@okta/okta-react';
 
 import { Service } from '../components/Service';
 
@@ -12,6 +13,7 @@ import { Service } from '../components/Service';
 export function Home() {
   const [env, setEnv] = useState<string>('Environment');
   let storage = window.localStorage;
+  const { authState, oktaAuth } = useOktaAuth();
 
   // if (envStore != 'Environment') {
   //   setEnv(envStore);
