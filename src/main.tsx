@@ -6,6 +6,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { Security } from '@okta/okta-react';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 
+
+// @ts-ignore
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 // const oktaAuth = new OktaAuth({
 //   issuer: `https://{yourOktaDomain}/oauth2/default`,
 //   clientId: '{yourClientID}',
