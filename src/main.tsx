@@ -16,11 +16,17 @@ import "bootstrap/dist/css/bootstrap.min.css"
 //   clientId: '{yourClientID}',
 //   redirectUri: `${window.location.origin}/callback`,
 // });
+// const oktaAuth = new OktaAuth({
+//   issuer: 'https://okta.foreflight.com/oauth2/default',
+//   clientId: '0oa6ouez89QNz8fyT697',
+//   // redirectUri: window.location.origin + '/authorization_code/callback'
+//   redirectUri: 'https://main.d2uxbb190zvwy0.amplifyapp.com/login/callback'
+// });
 const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com/oauth2/default',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: 'https://main.d2uxbb190zvwy0.amplifyapp.com/login/callback'
+  redirectUri: 'https://localhost:8080/login/callback'
 });
 
 function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {
