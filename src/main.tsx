@@ -26,7 +26,7 @@ const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com/oauth2/default',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: 'https://localhost:8080/login/callback'
+  redirectUri: 'https://ecs-dashboard.foreflight.com/login/callback'
 });
 
 function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {

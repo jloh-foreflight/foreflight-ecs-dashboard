@@ -12,7 +12,7 @@ function App() {
       <NavbarComp />
       <Container className="mb-4 ml-4">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <SecureRoute exact path="/" component={Home} />
           {/* <SecureRoute path="/converter" component={Converter} /> */}
           <Route path="/login/callback" component={LoginCallback} />
         </Switch>
