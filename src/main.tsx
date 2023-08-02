@@ -8,7 +8,8 @@ import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 
 
 // @ts-ignore
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css"
+//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // const oktaAuth = new OktaAuth({
 //   issuer: `https://{yourOktaDomain}/oauth2/default`,
