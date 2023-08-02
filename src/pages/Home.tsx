@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Spinner, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import { Service } from '../components/Service';
 
 

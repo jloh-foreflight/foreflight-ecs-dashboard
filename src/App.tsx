@@ -2,14 +2,14 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { LoginCallback, SecureRoute } from '@okta/okta-react';
 
 import { Home } from './pages/Home';
-import { Navbar } from './components/Navbar';
-import { Container } from 'react-bootstrap';
+import { NavbarComp } from './components/NavbarComp';
+import Container from 'react-bootstrap/Container';
 
 
 function App() {
   return (
     <>
-      <Navbar />
+      <NavbarComp />
       <Container className="mb-4 ml-4">
         <Switch>
           <Route exact path="/" component={Home} />
