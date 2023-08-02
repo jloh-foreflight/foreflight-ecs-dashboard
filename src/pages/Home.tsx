@@ -4,15 +4,30 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 import { Service } from '../components/Service';
 
 
 export function Home() {
   const [env, setEnv] = useState<string>('Environment');
+  let storage = window.localStorage;
+
+  // if (envStore != 'Environment') {
+  //   setEnv(envStore);
+  // }
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   //const [reload, setReload] = useState(false);
+
+  function localEnv() {
+    if (localStorage.getItem('env') === null) {
+      localStorage.setItem('env', env)
+    }
+    const envStore = localStorage.getItem('env')
+
+    console.log(envStore)
+  }
 
   const loadData = async () => {
     // Till the data is fetch using API
@@ -47,6 +62,7 @@ export function Home() {
     if (env != 'Environment') {
       // Run every minute
       loadData();
+      localEnv();
       //setInterval(loadData(), 20*1000);
 
       //setReload(true)
@@ -57,7 +73,7 @@ export function Home() {
     setEnv(e);
     return e;
   };
-
+  console.log(env == 'Environment', env)
   return (
     <>
       <div className="flex flex-col">
@@ -65,48 +81,64 @@ export function Home() {
           <div>
             <h1>ECS Dashboard</h1>
           </div>
-          <div className="flex flex-row p-2">
-            <DropdownButton
-              title={env}
-              id="dropdown-menu-align-right"
-              onSelect={(eventKey: any) => handleSelect(eventKey)}
-            >
-              <Dropdown.Item eventKey="Apollo">Apollo</Dropdown.Item>
-              <Dropdown.Item eventKey="QA">QA</Dropdown.Item>
-              <Dropdown.Item eventKey="Prod Account">
-                Prod Account
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Production">Production</Dropdown.Item>
-              <Dropdown.Item eventKey="AviationCloud QA">
-                AviationCloud QA
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="AviationCloud Production">
-                AviationCloud Production
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Flight Deck Pro">
-                Flight Deck Pro
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Foreflight Data">
-                Foreflight Data
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="GIS">GIS</Dropdown.Item>
-              <Dropdown.Item eventKey="Root">Root</Dropdown.Item>
-              <Dropdown.Item eventKey="Mapping">Mapping</Dropdown.Item>
-              <Dropdown.Item eventKey="Marketing">Marketing</Dropdown.Item>
-              <Dropdown.Item eventKey="MFB">MFB</Dropdown.Item>
-              <Dropdown.Item eventKey="Prod Flight">Prod Flight</Dropdown.Item>
-              <Dropdown.Item eventKey="Prod Security">
-                Prod Security
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Skylab">Skylab</Dropdown.Item>
-              <Dropdown.Item eventKey="Tools">Tools</Dropdown.Item>
-              <Dropdown.Item eventKey="MobileOps">MobileOps</Dropdown.Item>
-            </DropdownButton>
+          <div className="flex flex-row p-2 align-middle justify-center">
+            <div>
+              
+              {
+                env == 'Environment' && loading == false ? <Button type="button"
+                size='sm'  className='mr-3 h-9' disabled>
+                Refresh
+              </Button> : <Button type="button" onClick={()=> loadData()}
+                size='sm' className='mr-3 h-9'>
+                Refresh
+              </Button>
+              } 
+            </div>
+            
+            <div>
+
+              <DropdownButton
+                title={env}
+                id="dropdown-menu-align-right"
+                onSelect={(eventKey: any) => handleSelect(eventKey)}
+              >
+                <Dropdown.Item eventKey="Apollo">Apollo</Dropdown.Item>
+                <Dropdown.Item eventKey="QA">QA</Dropdown.Item>
+                <Dropdown.Item eventKey="Prod Account">
+                  Prod Account
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="Production">Production</Dropdown.Item>
+                <Dropdown.Item eventKey="AviationCloud QA">
+                  AviationCloud QA
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="AviationCloud Production">
+                  AviationCloud Production
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="Flight Deck Pro">
+                  Flight Deck Pro
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="Foreflight Data">
+                  Foreflight Data
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="GIS">GIS</Dropdown.Item>
+                <Dropdown.Item eventKey="Root">Root</Dropdown.Item>
+                <Dropdown.Item eventKey="Mapping">Mapping</Dropdown.Item>
+                <Dropdown.Item eventKey="Marketing">Marketing</Dropdown.Item>
+                <Dropdown.Item eventKey="MFB">MFB</Dropdown.Item>
+                <Dropdown.Item eventKey="Prod Flight">Prod Flight</Dropdown.Item>
+                <Dropdown.Item eventKey="Prod Security">
+                  Prod Security
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="Skylab">Skylab</Dropdown.Item>
+                <Dropdown.Item eventKey="Tools">Tools</Dropdown.Item>
+                <Dropdown.Item eventKey="MobileOps">MobileOps</Dropdown.Item>
+              </DropdownButton>
+            </div>
           </div>
         </div>
         <div className="pu-1">
           <Row md={2} xs={1} lg={3} className="g-3">
-            {env && loading ? (
+            {env != 'Environment' && loading ? (
               <Spinner animation="border" variant="primary" />
             ) : (
               data.map((item) => {
