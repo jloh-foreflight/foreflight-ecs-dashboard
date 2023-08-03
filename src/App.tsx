@@ -36,13 +36,13 @@ function App() {
 
         <NavbarComp />
         <Container className="mb-4 ml-4">
-          {/* <Switch> */}
+          <Switch>
             {/* <SecureRoute path="/" exact={true} component={Test}/> */}
-            <Route exact path="/" component={Test} />
+            <Route exact path="/" component={LoginCallback} />
             <SecureRoute path="/home" component={Home} />
             {/* <SecureRoute path="/converter" component={Converter} /> */}
-            <Route path="/login/callback" component={LoginCallback} />
-          {/* </Switch> */}
+            <Route path="/login/callback" component={Test} />
+          </Switch>
         </Container>
       </Security>
     </>
