@@ -14,6 +14,7 @@ export function Home() {
   const [env, setEnv] = useState<string>('Environment');
   let storage = window.localStorage;
   const { authState, oktaAuth } = useOktaAuth();
+  console.log(authState)
 
   // if (envStore != 'Environment') {
   //   setEnv(envStore);
