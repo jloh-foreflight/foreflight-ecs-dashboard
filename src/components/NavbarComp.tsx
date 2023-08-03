@@ -14,15 +14,16 @@ export function NavbarComp() {
 
   return (
     <Navbar  sticky="top" className="bg-white shadow-sm mb-3">
-      <Container>
+      <Container className='d-flex justify-content-around'>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>
             Home
           </Nav.Link>
-          {authState?.isAuthenticated ? <Button onClick={() => logout()}>
+          
+        </Nav>
+        {authState?.isAuthenticated ? <Button onClick={() => logout()}>
             Logout
           </Button> : (null)}
-        </Nav>
       </Container>
     </Navbar>
   );
