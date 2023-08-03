@@ -41,7 +41,7 @@ function App() {
             <SecureRoute exact path="/" component={Home} />
             {/* /<SecureRoute path="/home" component={Home} /> */}
             {/* <SecureRoute path="/converter" component={Converter} /> */}
-            <Route path="/login/callback" component={Test} />
+            <Route path="/login/callback" component={LoginCallback} />
           </Switch>
         </Container>
       </Security>
