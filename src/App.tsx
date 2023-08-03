@@ -12,7 +12,7 @@ const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: window.location.origin  + '/login/callback', 
+  redirectUri: window.location.origin, 
   
 });
 
@@ -40,7 +40,7 @@ function App() {
           {/* <SecureRoute path="/" exact={true} component={Test}/> */}
           <SecureRoute path="/" exact={true} component={Home} />
           {/* <SecureRoute path="/converter" component={Converter} /> */}
-          <Route path="/login/callback" component={LoginCallback} />
+          {/* <Route path="/login/callback" component={LoginCallback} /> */}
         {/* </Switch> */}
       </Container>
       </Security>
