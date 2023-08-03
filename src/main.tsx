@@ -26,13 +26,16 @@ const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: window.location.origin  + '/login/callback'
+  redirectUri: window.location.origin  + '/login/callback', 
+  
 });
 
 function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {
-  window.location.replace(
-    toRelativeUrl(originalUri || "/", window.location.origin)
-  );
+  // window.location.replace(
+  //   toRelativeUrl(originalUri || "/", window.location.origin)
+  // );
+  console.log(originalUri)
+  window.location.replace(originalUri);
 }
 
 ReactDOM.render(
