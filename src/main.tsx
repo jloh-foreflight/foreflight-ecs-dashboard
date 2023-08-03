@@ -35,7 +35,7 @@ function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {
   //   toRelativeUrl(originalUri || "/", window.location.origin)
   // );
   console.log(originalUri)
-  window.location.replace(originalUri);
+  window.location.replace("/");
 }
 
 ReactDOM.render(

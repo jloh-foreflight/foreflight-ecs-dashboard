@@ -14,7 +14,7 @@ function App() {
       <Container className="mb-4 ml-4">
         {/* <Switch> */}
           {/* <SecureRoute path="/" exact={true} component={Test}/> */}
-          <SecureRoute path="/" component={Home} />
+          <SecureRoute path="/" exact={true} component={Home} />
           {/* <SecureRoute path="/converter" component={Converter} /> */}
           <Route path="/login/callback" component={LoginCallback} />
         {/* </Switch> */}
