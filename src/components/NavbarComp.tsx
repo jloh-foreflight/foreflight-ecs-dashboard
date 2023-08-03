@@ -9,7 +9,7 @@ export function NavbarComp() {
 
   const { authState, oktaAuth } = useOktaAuth();
   console.log(authState)
-  const logout = async () => oktaAuth.signOut();
+  const logout = async () => {oktaAuth.signOut();oktaAuth.tokenManager.clear()}
 
 
   return (
