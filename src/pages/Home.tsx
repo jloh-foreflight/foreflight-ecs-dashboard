@@ -88,7 +88,7 @@ export function Home() {
                 size='sm'  className='mr-3 h-9' disabled>
                 Refresh
               </Button> : <Button type="button" onClick={()=> loadData()}
-                size='sm' className='mr-3 h-9'>
+                size='sm' className='mr-3 h-9 pb-1'>
                 Refresh
               </Button>
               } 
