@@ -12,7 +12,7 @@ const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: window.location.origin, 
+  redirectUri: 'https://ecs-dashboard.foreflight.com', 
   
 });
 
