@@ -16,6 +16,8 @@ export function Home() {
   const { authState, oktaAuth } = useOktaAuth();
   console.log(authState)
 
+  const logout = async () => oktaAuth.signOut();
+
   // if (envStore != 'Environment') {
   //   setEnv(envStore);
   // }
@@ -84,6 +86,7 @@ export function Home() {
           <div>
             <h1>ECS Dashboard</h1>
           </div>
+          <button onClick={logout}>Logout</button>
           <div className="flex flex-row p-2 align-middle justify-center">
             <div>
               
