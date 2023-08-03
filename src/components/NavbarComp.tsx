@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useOktaAuth } from '@okta/okta-react';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 export function NavbarComp() {
 
@@ -16,7 +16,7 @@ export function NavbarComp() {
     <Navbar  sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
         <Nav className="me-auto">
-          <Nav.Link to="/home" as={NavLink}>
+          <Nav.Link to="/" as={NavLink}>
             Home
           </Nav.Link>
           {authState?.isAuthenticated ? <Button onClick={() => logout()}>

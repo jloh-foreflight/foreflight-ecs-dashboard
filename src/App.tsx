@@ -4,9 +4,10 @@ import { LoginCallback, SecureRoute } from '@okta/okta-react';
 import { Home } from './pages/Home';
 import { NavbarComp } from './components/NavbarComp';
 import Container from 'react-bootstrap/Container';
-import Test from './pages/Test';
+import Test from './pages/Logout';
 import { Security } from '@okta/okta-react';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
+import Logout from './pages/Logout';
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
@@ -39,7 +40,7 @@ function App() {
           <Switch>
             {/* <SecureRoute path="/" exact={true} component={Test}/> */}
             <SecureRoute exact path="/" component={Home} />
-            {/* /<SecureRoute path="/home" component={Home} /> */}
+            <Route path="/logout/callback" component={Logout} />
             {/* <SecureRoute path="/converter" component={Converter} /> */}
             <Route path="/login/callback" component={LoginCallback} />
           </Switch>
