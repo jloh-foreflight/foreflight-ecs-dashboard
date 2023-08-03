@@ -14,7 +14,7 @@ const oktaAuth = new OktaAuth({
   clientId: '0oa6rb84ooKEUJKKT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
   redirectUri: 'https://ecs-dashboard.foreflight.com/login/callback/', 
-  
+  postLogoutRedirectUri: 'post_logout_redirect_uri'
 });
 
 // function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {
