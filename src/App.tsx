@@ -12,7 +12,7 @@ const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
   clientId: '0oa6ouez89QNz8fyT697',
   // redirectUri: window.location.origin + '/authorization_code/callback'
-  redirectUri: 'https://ecs-dashboard.foreflight.com', 
+  redirectUri: 'https://ecs-dashboard.foreflight.com/login/callback', 
   
 });
 
@@ -34,15 +34,15 @@ function App() {
     <>
       <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
 
-      <NavbarComp />
-      <Container className="mb-4 ml-4">
-        {/* <Switch> */}
-          {/* <SecureRoute path="/" exact={true} component={Test}/> */}
-          <SecureRoute path="/" exact={true} component={Home} />
-          {/* <SecureRoute path="/converter" component={Converter} /> */}
-          {/* <Route path="/login/callback" component={LoginCallback} /> */}
-        {/* </Switch> */}
-      </Container>
+        <NavbarComp />
+        <Container className="mb-4 ml-4">
+          {/* <Switch> */}
+            {/* <SecureRoute path="/" exact={true} component={Test}/> */}
+            <SecureRoute path="/" exact={true} component={Home} />
+            {/* <SecureRoute path="/converter" component={Converter} /> */}
+            <Route path="/login/callback" component={LoginCallback} />
+          {/* </Switch> */}
+        </Container>
       </Security>
     </>
   )
