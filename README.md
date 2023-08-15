@@ -1,18 +1,19 @@
-# React TypeScript App using Vite Example
+# ForeFlight ECS Dashboard
 
-This example app shows how to create a TypeScript-based React app using Vite and add authentication.
+This app was forked from [Okta React Vite Number Converter Example](https://github.com/oktadev/okta-react-vite-number-converter-example), featuring a dashboard that pulls ECS information and displays it in a simple format.
 
-Please read [Creating a TypeScript React Application with Vite](https://developer.okta.com/blog/2022/03/15/react-vite-number-converter) to see how this app was created.
+The frontend stack uses Vite, TypeScript, React, Tailwind, and Bootstrap.
+The AWS architecture utilizes:
+* API Gateway to invoke AWS Lambda and handle requests
+* AWS Lambda to send SQL queries to AWS Config and parse response
+* Route53 for domain registration
+
+The project was forked to get a working Okta React Vite implementation deployable on AWS Amplify.
 
 **Prerequisites:**
 
 * [Node](https://nodejs.org/en/) installed
-* An [Okta Developer Account](https://developer.okta.com/signup)
-
-> [Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage and secure users and roles in any application.
-
 * [Getting Started](#getting-started)
-* [Links](#links)
 * [Help](#help)
 * [License](#license)
 
@@ -21,54 +22,29 @@ Please read [Creating a TypeScript React Application with Vite](https://develope
 To install this example application, run the following commands:
 
 ```bash
-git clone https://github.com/oktadeveloper/okta-react-vite-number-converter-example.git
-cd okta-react-vite-number-converter-example
+git clone https://github.com/jloh-foreflight/foreflight-ecs-dashboard.git
+cd foreflight-ecs-dashboard
 npm install
 ```
 
-### Create an OIDC App on Okta
+### Configure your Environment Variables
 
-Before you begin, you'll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`.
-
-Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Single-Page App** and press **Enter**.
-
-Change the Redirect URI to `http://localhost:3000/callback` and accept the default Logout Redirect URI of `http://localhost:3000`.
-
-The Okta CLI will create an OIDC Single-Page App in your Okta Org. It will add the redirect URIs you specified and grant access to the Everyone group. It will also add a trusted origin for `http://localhost:3000`. You will see output like the following when it's finished:
-
-```
-Okta application configuration:
-Issuer:    https://{yourOktaDomain}/oauth2/default
-Client ID: {clientId}
+```bash
+touch .env
+nano .env
 ```
 
-**NOTE:** You can also use the Okta Admin Console to create your app. See [Create a React App](https://developer.okta.com/docs/guides/sign-into-spa/react/create-okta-application/) for more information.
-
-### Configure your Okta Settings
-
-Copy your org URL and client ID into `src/index.js`:
-
-```js
-const oktaAuth = new OktaAuth({
-  issuer: 'https://{yourOktaDomain}/oauth2/default',
-  clientId: '{yourClientID}',
-  redirectUri: `/callback`,
-});
+Then add the following:
+```nano
+VITE_API_INVOKE_URL=${VITE_API_INVOKE_URL}
+VITE_API_ACCESS_KEY=${VITE_API_ACCESS_KEY}
 ```
 
 Serve the app using Vite by running `npm run dev`, and login with Okta to see the finished app!
 
-## Links
-
-This example uses the following open source libraries:
-
-* [React](https://reactjs.org/)
-* [Okta React OIDC SDK](https://github.com/okta/okta-react)
-* [Okta Auth JavaScript SDK](https://github.com/okta/okta-auth-js)
-
 ## Help
 
-Please post any questions as issues in this repository, or visit our [Okta Developer Forums](https://devforum.okta.com/).
+Please post any questions as issues in this repository.
 
 ## License
 
