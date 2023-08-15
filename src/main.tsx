@@ -10,11 +10,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}> */}
+    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    {/* </Security> */}
+    </Security>
   </React.StrictMode>,
   document.getElementById('root')
 )

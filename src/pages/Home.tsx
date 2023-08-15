@@ -11,10 +11,10 @@ import { Service } from '../components/Service';
 
 export function Home() {
   const [env, setEnv] = useState<string|null>('Environment');
-  if (localStorage.getItem("env") != null) {
+  if (localStorage.getItem("env") != env) {
     setEnv(localStorage.getItem("env"))
-    console.log(env)
-  }
+  };
+  var localResults: string | null = localStorage.getItem('getResponse')
 
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
@@ -42,18 +42,19 @@ export function Home() {
     const res = await JSON.parse(res_body);
     const newArrayDataOfObject: Array<string | string[]> = Object.entries(res);
     setData(newArrayDataOfObject);
+    localStorage.setItem('getResponse', JSON.stringify(newArrayDataOfObject));
+    // console.log(localStorage.getItem('getResponse'))
     setLoading(false);
   };
 
   useEffect(() => {
     // Call the function
-    if (env != 'Environment') {
+    if (env != 'Environment' && !localStorage.getItem('getResponse')) {
       // Run every minute
       loadData();
-      localEnv();
       //setInterval(loadData(), 20*1000);
-
-      //setReload(true)
+    } else if (localResults != null) {
+      setData(JSON.parse(localResults));
     }
   }, [env]);
 
@@ -62,7 +63,6 @@ export function Home() {
     localStorage.setItem('env', e);
     return e;
   };
-  console.log(env == 'Environment', env)
   return (
     <>
       <div className="flex flex-col">
