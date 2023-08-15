@@ -12,18 +12,9 @@ import Logout from './pages/Logout';
 const oktaAuth = new OktaAuth({
   issuer: 'https://okta.foreflight.com',
   clientId: '0oa6rb84ooKEUJKKT697',
-  // redirectUri: window.location.origin + '/authorization_code/callback'
   redirectUri: 'https://ecs-dashboard.foreflight.com/login/callback/', 
   postLogoutRedirectUri: 'https://ecs-dashboard.foreflight.com/logout/callback'
 });
-
-// function restoreOriginalUri(oktaAuth: OktaAuth, originalUri: string) {
-//   // window.location.replace(
-//   //   toRelativeUrl(originalUri || "/", window.location.origin)
-//   // );
-//   console.log(originalUri)
-//   window.location.replace("/");
-// }
 
 function App() {
   const history = useHistory();
@@ -38,10 +29,8 @@ function App() {
         <NavbarComp />
         <Container className="mb-4 ml-4">
           <Switch>
-            {/* <SecureRoute path="/" exact={true} component={Test}/> */}
             <SecureRoute exact path="/" component={Home} />
             <Route path="/logout/callback" component={Logout} />
-            {/* <SecureRoute path="/converter" component={Converter} /> */}
             <Route path="/login/callback" component={LoginCallback} />
           </Switch>
         </Container>

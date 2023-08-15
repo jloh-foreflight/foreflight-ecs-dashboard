@@ -10,23 +10,14 @@ import { Service } from '../components/Service';
 
 
 export function Home() {
-  const [env, setEnv] = useState<string>('Environment');
+  const [env, setEnv] = useState<string|null>('Environment');
+  if (localStorage.getItem("env") != null) {
+    setEnv(localStorage.getItem("env"))
+    console.log(env)
+  }
 
-  // if (envStore != 'Environment') {
-  //   setEnv(envStore);
-  // }
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
-  //const [reload, setReload] = useState(false);
-
-  function localEnv() {
-    if (localStorage.getItem('env') === null) {
-      localStorage.setItem('env', env)
-    }
-    const envStore = localStorage.getItem('env')
-
-    console.log(envStore)
-  }
 
   const loadData = async () => {
     // Till the data is fetch using API
@@ -35,7 +26,6 @@ export function Home() {
     const key: any = import.meta.env.VITE_API_ACCESS_KEY
     const myHeaders: Headers = new Headers();
     // add content type header and API key to object
-    //myHeaders.append('X-Api-Key', process.env.VITE_API_ACCESS_KEY);
     myHeaders.append('X-Api-Key', key);
     myHeaders.append('Content-Type', 'application/json');
 
@@ -45,7 +35,6 @@ export function Home() {
       body: JSON.stringify({ env: env }),
       redirect: 'follow'
     };
-    //const api_invocation_link: string = process.env.VITE_API_INVOKE_URL;
     const api_invocation_link: any = import.meta.env.VITE_API_INVOKE_URL;
     const response: any = await fetch(api_invocation_link, requestOptions);
     const res_json: any = await response.json();
@@ -70,6 +59,7 @@ export function Home() {
 
   const handleSelect = (e: string) => {
     setEnv(e);
+    localStorage.setItem('env', e);
     return e;
   };
   console.log(env == 'Environment', env)
