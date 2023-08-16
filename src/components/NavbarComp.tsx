@@ -12,6 +12,9 @@ export function NavbarComp() {
 
   console.log('e', authState?.refreshToken)
   console.log(authState)
+  if (authState?.isAuthenticated == false) {
+    localStorage.clear()
+  }
   return ( 
     <Navbar  sticky="top" className="bg-white shadow-sm mb-3">
       <Container className='d-flex justify-content-around'>
