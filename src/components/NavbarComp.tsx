@@ -10,8 +10,9 @@ export function NavbarComp() {
   const { authState, oktaAuth } = useOktaAuth();
   const logout = async () => {oktaAuth.signOut();oktaAuth.tokenManager.clear()};
 
-
-  return (
+  console.log('e', authState?.refreshToken)
+  console.log(authState)
+  return ( 
     <Navbar  sticky="top" className="bg-white shadow-sm mb-3">
       <Container className='d-flex justify-content-around'>
         <Nav className="me-auto">
@@ -20,7 +21,7 @@ export function NavbarComp() {
           </Nav.Link>
           
         </Nav>
-        {authState?.isAuthenticated ? <Button onClick={() => logout()}>
+        {authState?.isAuthenticated || authState?.refreshToken == null ? <Button onClick={() => logout()}>
             Logout
           </Button> : (null)}
       </Container>
