@@ -11,7 +11,8 @@ import { Service } from '../components/Service';
 
 export function Home() {
   const [env, setEnv] = useState<string|null>('Environment');
-  if (localStorage.getItem("env") != env) {
+  console.log('env', localStorage.getItem("env"))
+  if (localStorage.getItem("env") != null && localStorage.getItem("env") != env) {
     setEnv(localStorage.getItem("env"))
   };
   var localResults: string | null = localStorage.getItem('getResponse')
