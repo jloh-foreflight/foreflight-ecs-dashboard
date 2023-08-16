@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 export function NavbarComp() {
 
   const { authState, oktaAuth } = useOktaAuth();
-  const logout = async () => {oktaAuth.signOut();oktaAuth.tokenManager.clear()};
+  const logout = async () => {oktaAuth.signOut();oktaAuth.tokenManager.clear();localStorage.clear();};
 
   console.log('e', authState?.refreshToken)
   console.log(authState)
