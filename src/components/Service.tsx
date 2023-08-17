@@ -52,7 +52,7 @@ export function Service({
           <div className="text-right">
             <div className="mb-3">
               {
-                teamCityLink != 'https://build.foreflight.com' ? 
+                teamCityLink != 'https://build.foreflight.com/' ? 
                 <a
                 href={teamCityLink}
                 target="_blank"
