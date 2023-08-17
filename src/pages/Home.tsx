@@ -40,6 +40,7 @@ export function Home() {
     const response: any = await fetch(api_invocation_link, requestOptions);
     const res_json: any = await response.json();
     const res_body: string = res_json.body
+    console.log('body', res_body)
     const res = await JSON.parse(res_body);
     const newArrayDataOfObject: Array<string | string[]> = Object.entries(res);
     setData(newArrayDataOfObject);
