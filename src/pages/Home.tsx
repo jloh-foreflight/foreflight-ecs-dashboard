@@ -91,7 +91,7 @@ export function Home() {
               <DropdownButton
                 title={env}
                 id="dropdown-menu-align-right"
-                onSelect={(eventKey: any) => handleSelect(eventKey)}
+                onSelect={(eventKey: any) => {handleSelect(eventKey);loadData()}}
               >
                 <Dropdown.Item eventKey="Apollo">Apollo</Dropdown.Item>
                 <Dropdown.Item eventKey="QA">QA</Dropdown.Item>
