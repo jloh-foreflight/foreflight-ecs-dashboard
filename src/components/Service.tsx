@@ -51,7 +51,7 @@ export function Service({
           </div>
           <div className="text-right">
             <div className="mb-3">
-              {/* {
+              {
                 teamCityLink != 'build.foreflight.com' ? 
                 <a
                 href={teamCityLink}
@@ -60,9 +60,9 @@ export function Service({
               >
                 TeamCity
               </a> :
-              (null)
+              null
 
-              } */}
+              }
 
               <a
                 href={teamCityLink}
